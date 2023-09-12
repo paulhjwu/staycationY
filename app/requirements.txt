@@ -1,5 +1,5 @@
 click
-Flask
+Flask==2.2.2
 Flask-Login
 flask-mongoengine
 Flask-WTF
