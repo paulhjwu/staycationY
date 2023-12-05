@@ -32,6 +32,11 @@ app.register_blueprint(auth)
 app.register_blueprint(booking)
 app.register_blueprint(package)
 
+# Add in flask_debugtoolbar
+from flask_debugtoolbar import DebugToolbarExtension
+toolbar = DebugToolbarExtension(app)
+# app.register_blueprint(toolbar.debug_toolbars) 
+
 @app.template_filter('formatdate') # use this name
 def format_date(value, format="%#d/%m/%Y"):
     """Format a date time to (Default): dd/mm/YYYY"""

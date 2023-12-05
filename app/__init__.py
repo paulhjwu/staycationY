@@ -14,6 +14,11 @@ def create_app():
     db = MongoEngine(app)
 
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
+
+    app.config['DEBUG_TB_ENABLED'] = True
+    app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+    # app.config['SECRET_KEY'] = 'your_secret_key'
+    
     login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
