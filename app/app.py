@@ -13,6 +13,7 @@ from controllers.dashboard import dashboard
 from controllers.auth import auth
 from controllers.bookController import booking
 from controllers.packageController import package
+from controllers.api import api
 
 from models.package import Package
 from models.book import Booking
@@ -31,6 +32,7 @@ app.register_blueprint(dashboard)
 app.register_blueprint(auth)
 app.register_blueprint(booking)
 app.register_blueprint(package)
+app.register_blueprint(api)
 
 # Add in flask_debugtoolbar
 from flask_debugtoolbar import DebugToolbarExtension
