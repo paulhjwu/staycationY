@@ -4,11 +4,11 @@ ENV TZ="Asia/Singapore"
 ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /
-RUN mkdir staycation
-COPY . /staycation
+RUN mkdir -p staycation/app
+COPY app /staycation/app
 
-WORKDIR /staycation
-RUN pip3 install -r /staycation/app/requirements.txt --no-cache-dir && \
+WORKDIR /staycation/app
+RUN pip3 install -r requirements.txt --no-cache-dir && \
     pip3 install gunicorn --no-cache-dir && \
     pip3 install Werkzeug==2.2.2 --no-cache-dir && \
     wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | apt-key add - && \
@@ -16,6 +16,8 @@ RUN pip3 install -r /staycation/app/requirements.txt --no-cache-dir && \
     apt update && \
     apt install mongodb-org -y
 
+WORKDIR /staycation
 ENV PYTHONPATH=/staycation/app
+
 EXPOSE 5000
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "-m", "007", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "-m", "007", "app.app:app"]
