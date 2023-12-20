@@ -8,7 +8,8 @@ def create_app():
     app = Flask(__name__)
     app.config['MONGODB_SETTINGS'] = {
         'db':'staycation',
-        'host':'localhost'
+        # 'host':'localhost',
+        'host':'db'
     }
     app.static_folder = 'assets'
     db = MongoEngine(app)
